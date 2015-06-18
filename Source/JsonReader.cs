@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Globalization;
 
 namespace LitJson {
 
@@ -227,7 +228,7 @@ public class JsonReader {
 			number.IndexOf('E') != -1) {
 
 			double real;
-			if (double.TryParse (number, out real)) {
+			if (double.TryParse(number, NumberStyles.Float, NumberFormatInfo.InvariantInfo, out real)) {
 				Token = JsonToken.Real;
 				Value = real;
 				return;
