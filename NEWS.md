@@ -50,6 +50,11 @@ root.field = new Derived();
 JsonWriter writer = new JsonWriter();
 writer.TypeHinting = true;
 string json = JsonMapper.ToJson(root, writer);
+
+// To deserialize the resulting JSON, use a JsonReader with TypeHinting set to true.
+JsonReader reader = new JsonReader(json);
+reader.TypeHinting = true
+Root deserializedRoot = JsonMapper.ToObject<Root>(reader);
 ```
 
 The resultant JSON will be as follows:
